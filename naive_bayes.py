@@ -4,7 +4,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
-
+import numpy as np
 
 def naive_bayes(X_train, y_train, X_test, y_test):
     """

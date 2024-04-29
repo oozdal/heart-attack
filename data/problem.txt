@@ -1,0 +1,29 @@
+
+Please take a moment to review `echocardiogram.names` and familiarize 
+yourself with the data.
+
+Build a model that can predict whether a patient has survived at 
+least 2 years. Why did you choose this approach?
+
+Build another model using a different algorithm/approach to tackle the 
+same problem. How does this algorithm/approach differ from your 
+original model?
+
+Compare the two models. Run both models on the echocardiogram.test data. 
+Which model is better?
+
+If given a new batch of unlabelled records, what is your estimate of the 
+accuracy of the two models on this new set?
+
+Apply the two models to `echocardiogram.test` and label that dataset.
+
+If you were given the opportunity to add additional features to this 
+dataset, what would you choose to include?
+
+Provide a Jupyter Notebook containing your analysis code, and a 
+report (maximum 1 page), explaining your approach and the results 
+obtained from a high level. We will discuss the details during your 
+interview. We are more interested in the process than the accuracy of 
+your models.
+
+Good luck!
