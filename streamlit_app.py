@@ -8,9 +8,9 @@ import joblib, pickle
 
 
 # Streamlit app
-st.subheader('Survival (within 2 years) Predictor After Having a Heart Attack')
+st.subheader("Two-year Survival Predictor After Heart Attack")
 
-uploaded_file = st.file_uploader("Upload your echocardiogram.test to get your predictions", label_visibility="collapsed")
+uploaded_file = st.file_uploader("Upload your echocardiogram.test to get your predictions.", label_visibility="visible")
 
 
 if st.button("Submit"):
@@ -111,12 +111,18 @@ if st.button("Submit"):
             # Display the DataFrame
             st.write(test_data_df_updated)
 
+            # Display an image of a guy having an heart attack
+            st.image('model/heart_attack.png', caption='Heart Attack')
+
         else:
             # Read the data file into a DataFrame
             df = pd.read_csv("data/echocardiogram_predictions.csv", header=None) # Assuming there's no header in the file
 
             # Display the DataFrame
             st.write(df)
+
+            # Display an image of a guy having an heart attack
+            st.image('model/heart_attack.png', caption='Heart Attack')
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
