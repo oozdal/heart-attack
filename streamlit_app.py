@@ -118,6 +118,15 @@ if st.button("Submit"):
             # Read the data file into a DataFrame
             df = pd.read_csv("data/echocardiogram_predictions.csv", header=None) # Assuming there's no header in the file
 
+            # Define column names
+            column_names = ["survival", "still-alive", "age-at-heart-attack", "pericardial-effusion", "fractional-shortening",
+                        "epss", "lvdd", "wall-motion-score", "wall-motion-index", "mult", "name", "group", "alive-at-1",
+                        "Prediction RF", "Prediction Probability RF", "Prediction XGBoost", "Prediction Probability XGBoost"
+                    ] # Add all column names here
+            
+            # Assign column names to the DataFrame
+            df.columns = column_names
+
             # Display the DataFrame
             st.write(df)
 
