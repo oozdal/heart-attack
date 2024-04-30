@@ -1,4 +1,9 @@
-# Survival Predictor After Having a Heart Attack
+# Two-year Survival Predictor After Having a Heart Attack (Web App)
+
+The Two-year Survival Predictor After Having a Heart Attack is an application designed to predict patient survival rates following a heart attack, focusing on helping healthcare professionals in making informed decisions and delivering personalized care. 
+This project leverages data analysis techniques and machine learning algorithms to provide accurate predictions.
+
+# Description
 
 This project aimed to develop a predictive model for assessing whether patients survived for at least two years following a heart attack. 
 The methodology commenced with comprehensive exploratory data analysis to elucidate the distributions of the provided features. 
@@ -25,3 +30,11 @@ The prominence of the added interaction terms in the SHAP charts underscored the
 
 To enhance the dataset, I would suggest adding features such as existing medical conditions (diabetes, hypertension, previous heart conditions), medication details post-heart attack, lifestyle factors (smoking, alcohol, diet, exercise), genetic information, 
 and relevant biomarkers (troponin levels, BNP, CRP). Enriching the dataset with these factors could significantly improve the accuracy of predictive models for forecasting patient survival rates post-heart attack.
+
+# Usage, Deployment & Streamlit User Interface
+
+The application is deployed and accessible at: [Two-year Survival Predictor Application (After Heart Attack)](https://heart-attack-j6dh.onrender.com/)
+
+Warning: Free Instance Spin-Down Delay
+
+Please note that the free instance provided by Render may experience spin-down due to inactivity. This could result in delays of 50 seconds or more when processing requests. Please be patient while your web browser tries to load the page.
