@@ -5,7 +5,28 @@ import numpy as np
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 import joblib, pickle
+from confusion_matrix import read_from_json
+import plotly.io as pio
+pio.templates.default = "none"
 
+light = '''
+<style>
+    .stApp {
+    background-color: white;
+    }
+</style>
+'''
+
+dark = '''
+<style>
+    .stApp {
+    background-color: black;
+    }
+</style>
+'''
+
+# Template Configuration
+st.markdown(dark, unsafe_allow_html=True)
 
 # Streamlit app
 st.subheader("Two-year Survival Predictor After Heart Attack")
@@ -111,6 +132,14 @@ if st.button("Submit"):
             # Display the DataFrame
             st.write(test_data_df_updated)
 
+            # Title
+            st.write("Random Forest Confusion Matrix")
+
+            # Display the Plotly Confusion Matrix
+            html_data = read_from_json('model/RandomForest_CM.json')
+            html_data.update_layout(plot_bgcolor='white')
+            st.plotly_chart(html_data, use_container_width=True, template='plotly')
+
             # Display an image of a guy having an heart attack
             st.image('model/heart_attack.png', caption='Heart Attack')
 
@@ -120,6 +149,14 @@ if st.button("Submit"):
 
             # Display the DataFrame
             st.write(df)
+
+            # Title
+            st.write("Random Forest Confusion Matrix")
+
+            # Display the Plotly Confusion Matrix
+            html_data = read_from_json('model/RandomForest_CM.json')
+            html_data.update_layout(plot_bgcolor='white')
+            st.plotly_chart(html_data, use_container_width=True, template='plotly')
 
             # Display an image of a guy having an heart attack
             st.image('model/heart_attack.png', caption='Heart Attack')
