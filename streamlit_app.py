@@ -132,9 +132,6 @@ if st.button("Submit"):
             # Display the DataFrame
             st.write(test_data_df_updated)
 
-            # Title
-            st.write("Random Forest Confusion Matrix")
-
             # Display the Plotly Confusion Matrix
             html_data = read_from_json('model/RandomForest_CM.json')
             html_data.update_layout(plot_bgcolor='white')
@@ -149,9 +146,6 @@ if st.button("Submit"):
 
             # Display the DataFrame
             st.write(df)
-
-            # Title
-            st.write("Random Forest Confusion Matrix")
 
             # Display the Plotly Confusion Matrix
             html_data = read_from_json('model/RandomForest_CM.json')
