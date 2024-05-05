@@ -5,8 +5,9 @@ import numpy as np
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 import joblib, pickle
-from confusion_matrix import read_from_json
+from confusion_matrix_plot import read_from_json
 import plotly.io as pio
+import streamlit.components.v1 as components
 pio.templates.default = "none"
 
 light = '''
@@ -130,12 +131,20 @@ if st.button("Submit"):
             test_data_df_updated = pd.concat([dataframe, prediction_df], axis=1)
 
             # Display the DataFrame
-            st.write(test_data_df_updated)
+            st.dataframe(test_data_df_updated)
 
             # Display the Plotly Confusion Matrix
             html_data = read_from_json('model/RandomForest_CM.json')
-            html_data.update_layout(plot_bgcolor='white')
             st.plotly_chart(html_data, use_container_width=True, template='plotly')
+
+            # Display Discrimination Threshold - Random Forest
+            #html_data = read_from_json('model/rf_disc_threshold.json')
+            #st.plotly_chart(html_data, use_container_width=True, template='plotly')
+
+            # Display Discrimination Threshold - Random Forest - Alternative
+            HtmlFile = open('model/rf_disc_threshold.html', 'r', encoding='utf-8')
+            source_code = HtmlFile.read() 
+            components.html(source_code, height = 600, width=1000)
 
             # Display an image of a guy having an heart attack
             st.image('model/heart_attack.png', caption='Heart Attack')
@@ -145,13 +154,21 @@ if st.button("Submit"):
             df = pd.read_csv("data/echocardiogram_predictions.csv") 
 
             # Display the DataFrame
-            st.write(df)
+            st.dataframe(df)
 
             # Display the Plotly Confusion Matrix
             html_data = read_from_json('model/RandomForest_CM.json')
-            html_data.update_layout(plot_bgcolor='white')
             st.plotly_chart(html_data, use_container_width=True, template='plotly')
 
+            # Display Discrimination Threshold - Random Forest
+            #html_data = read_from_json('model/rf_disc_threshold.json')
+            #st.plotly_chart(html_data, use_container_width=True, template='plotly')
+
+            # Display Discrimination Threshold - Random Forest - Alternative
+            HtmlFile = open('model/rf_disc_threshold.html', 'r', encoding='utf-8')
+            source_code = HtmlFile.read() 
+            components.html(source_code, height = 600, width=1000)
+    
             # Display an image of a guy having an heart attack
             st.image('model/heart_attack.png', caption='Heart Attack')
 
