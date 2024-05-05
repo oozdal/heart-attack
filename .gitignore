@@ -1,8 +1,5 @@
-# Ignore discrimination_threshold_plot.py file
-discrimination_threshold_plot.py
-
-# Ignore confusion_matrix_plot.py file
-confusion_matrix_plot.py
-
 # Ignore all __pycache__ directories and their contents recursively
 **/__pycache__/
+
+# Ignore all .py files within the reporting folder
+reporting/**/*.py

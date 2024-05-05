@@ -5,10 +5,15 @@ import numpy as np
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 import joblib, pickle
-from confusion_matrix_plot import read_from_json
+import plotly
 import plotly.io as pio
 import streamlit.components.v1 as components
 pio.templates.default = "none"
+
+
+def read_from_json(json_file):
+    return plotly.io.read_json(json_file)
+
 
 light = '''
 <style>
