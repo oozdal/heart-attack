@@ -151,6 +151,11 @@ if st.button("Submit"):
             source_code = HtmlFile.read() 
             components.html(source_code, height = 600, width=1000)
 
+            # Display a ROC-AUC comparison plot 
+            HtmlFile = open('model/roc_auc_comparison.html', 'r', encoding='utf-8')
+            source_code = HtmlFile.read() 
+            components.html(source_code, height = 800, width=1000)
+
             # Display an image of a guy having an heart attack
             st.image('model/heart_attack.png', caption='Heart Attack')
 
@@ -173,6 +178,11 @@ if st.button("Submit"):
             HtmlFile = open('model/rf_disc_threshold.html', 'r', encoding='utf-8')
             source_code = HtmlFile.read() 
             components.html(source_code, height = 600, width=1000)
+
+            # Display a ROC-AUC comparison plot 
+            HtmlFile = open('model/roc_auc_comparison.html', 'r', encoding='utf-8')
+            source_code = HtmlFile.read() 
+            components.html(source_code, height = 800, width=1000)
     
             # Display an image of a guy having an heart attack
             st.image('model/heart_attack.png', caption='Heart Attack')
