@@ -38,3 +38,11 @@ The application is deployed and accessible at: [Two-year Survival Predictor Appl
 Warning: Free Instance Spin-Down Delay
 
 Please note that the free instance provided by Render may experience spin-down due to inactivity. This could result in delays of 50 seconds or more when processing requests. Please be patient while your web browser tries to load the page.
+
+# Interactive Plotly Figures
+The Heart Attack App provides highly interactive Plotly figures that facilitate the extraction of insights.
+
+![Interactive ROC AUC Curve](https://github.com/oozdal/heart-attack/assets/34719109/218d118f-71d0-4de9-86bf-60efba98e3dd)
+
+![Interactive Disc Plot](https://github.com/oozdal/heart-attack/assets/34719109/d0783615-ecd9-45ea-835e-338785a6fc9f)
+
