@@ -8,11 +8,20 @@ import joblib, pickle
 import plotly
 import plotly.io as pio
 import streamlit.components.v1 as components
+import altair as alt
 pio.templates.default = "none"
 
 
 def read_from_json(json_file):
     return plotly.io.read_json(json_file)
+
+
+def map_number_to_class(number):
+    class_mapping = {
+        0: "won't survive",
+        1: "survives",
+    }
+    return class_mapping.get(number, 'Unknown')
 
 
 light = '''
@@ -192,11 +201,57 @@ if checkbox_val == "Yes" and uploaded_file is not None:
 elif checkbox_val == "No":
     if st.button("Submit"):
 
-        # Read the data file into a DataFrame
-        df = pd.read_csv("data/echocardiogram_predictions.csv") 
+        df = pd.DataFrame(data = {
+            'age-at-heart-attack': age,
+            'pericardial-effusion': pericardial_effusion,
+            'fractional-shortening': frac_short,
+            'epss': epss,
+            'lvdd': lvdd,
+            'wall-motion-index': wall_motion_index,
+            'age_lvdd_interaction': age * lvdd,
+            'wall-motion-index_lvdd_interaction': wall_motion_index * lvdd}, index=[0]
+        )
 
-        # Display the DataFrame
-        st.dataframe(df)
+        # Display the Chosen Values
+        chosen_val = df[['age-at-heart-attack',
+            'pericardial-effusion',
+            'fractional-shortening',
+            'epss',
+            'lvdd',
+            'wall-motion-index']].T
+        chosen_val.columns = ['Your Values']
+        st.dataframe(chosen_val)
+
+        # Define age groups
+        bins = [0, 55, 65, 100]  # Define the age boundaries for each group
+        labels = ['0-55', '55-65', '65-100']  # Define labels for each group
+
+        # Create a new column for age groups
+        df['age_group'] = pd.cut(df['age-at-heart-attack'], bins=bins, labels=labels, right=False)
+
+        # Predictions
+        filename = 'model/LogisticRegression.sav'
+        lg_pipe = pickle.load(open(filename, 'rb'))
+
+        # Predictions by Random Forest 
+        y_pred = lg_pipe.predict(df)
+        probabilities = lg_pipe.predict_proba(df)
+        max_prob = np.max(lg_pipe.predict_proba(df), axis=1)[0] * 100  
+
+        # Returns the result
+        st.success(f"This patient {map_number_to_class(y_pred[0])} with a probability of {max_prob:.2f}%.")
+
+        classes = ["Won't Survive", "Survive"]
+        # Bar chart showing probabilities for each class
+        df_prob = pd.DataFrame({'Class': classes, 'Probability': probabilities[0]})
+        chart = alt.Chart(df_prob).mark_bar().encode(
+            x='Probability',
+            y=alt.Y('Class', sort='-x')
+        ).properties(
+            width=500,
+            height=200
+        )
+        st.altair_chart(chart, use_container_width=True)
 
         # Display the Plotly Confusion Matrix
         html_data = read_from_json('model/RandomForest_CM.json')
@@ -218,4 +273,3 @@ elif checkbox_val == "No":
 
         # Display an image of a guy having an heart attack
         st.image('model/heart_attack.png', caption='Heart Attack')
-
