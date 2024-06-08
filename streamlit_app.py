@@ -229,6 +229,9 @@ elif checkbox_val == "No":
         # Create a new column for age groups
         df['age_group'] = pd.cut(df['age-at-heart-attack'], bins=bins, labels=labels, right=False)
 
+        # Convert 'Yes' and 'No' to 0 and 1
+        df['pericardial-effusion'] = np.where(df['pericardial-effusion'] == 'Yes', 1, 0)
+
         # Predictions
         filename = 'model/LogisticRegression.sav'
         lg_pipe = pickle.load(open(filename, 'rb'))
