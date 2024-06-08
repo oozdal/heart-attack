@@ -39,8 +39,27 @@ Warning: Free Instance Spin-Down Delay
 
 Please note that the free instance provided by Render may experience spin-down due to inactivity. This could result in delays of 50 seconds or more when processing requests. Please be patient while your web browser tries to load the page.
 
+# Screenshots
+
+If you have an `echocardiogram.test` file, You can upload your file to obtain predictions as demonstrated below. Once you click 'Yes' for the following question, a file uploader UI component will appear. You can then use this UI component to drag and drop your .csv file.
+
+![Screenshot 2024-06-08 150239](https://github.com/oozdal/heart-attack/assets/34719109/02781c28-cc9c-416c-a47d-1d1e1deb42ea)
+
+The predictions and their associated probabilities will be appended as additional columns to your `echocardiogram.test` file as demonstrated below.
+
+![Screenshot 2024-06-08 151151](https://github.com/oozdal/heart-attack/assets/34719109/309409b6-e460-4f26-9162-6da32f38dcaf)
+
+If you do not have an `echocardiogram.test` file, you can answer the following questions to obtain your predictions as demonstrated below.
+
+![Screenshot 2024-06-08 145605](https://github.com/oozdal/heart-attack/assets/34719109/862226ab-265a-4d66-a045-13125bed5a7c)
+
+Once you click `Submit`, you will see your selected values along with your prediction. Additionally, a plot displaying the probabilities of the predictions will be shown.
+
+![Screenshot 2024-06-08 150011](https://github.com/oozdal/heart-attack/assets/34719109/6742f01c-e89e-407e-b1f4-c48d67da65ae)
+
 # Interactive Plotly Figures
-The Heart Attack App provides highly interactive Plotly figures that facilitate the extraction of insights.
+
+The Heart Attack App also provides highly interactive Plotly figures that facilitate the extraction of insights.
 
 ![Interactive ROC AUC Curve](https://github.com/oozdal/heart-attack/assets/34719109/218d118f-71d0-4de9-86bf-60efba98e3dd)
 
